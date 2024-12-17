@@ -9,6 +9,10 @@ const PORT = 3051;
 
 //Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
+
+app.use("/post", require("./routes/post.routes"));
 
 
 app.listen(PORT, () => {
