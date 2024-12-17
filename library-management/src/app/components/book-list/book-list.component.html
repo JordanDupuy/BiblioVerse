@@ -1,3 +1,4 @@
+<h2>Book List</h2>
 <table>
   <thead>
     <tr>
@@ -15,8 +16,44 @@
       <td>{{ book.author }}</td>
       <td>{{ book.category }}</td>
       <td>
+        <!-- Boutons Supprimer et Modifier -->
         <button (click)="deleteBook(book.id)">Delete</button>
+        <button (click)="startEditing(book)">Edit</button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<!-- Formulaire de modification sans ngModel -->
+<div *ngIf="editingBook">
+  <h3>Edit Book</h3>
+  <form (submit)="saveEdit()">
+    <label>
+      Title:
+      <input
+        [value]="editingBook?.title"
+        (input)="onInputChange('title', $event)"
+        required
+      />
+    </label>
+    <label>
+      Author:
+      <input
+        [value]="editingBook?.author"
+        (input)="onInputChange('author', $event)"
+        required
+      />
+    </label>
+    <label>
+      Category:
+      <input
+        [value]="editingBook?.category"
+        (input)="onInputChange('category', $event)"
+        required
+      />
+    </label>
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
+
