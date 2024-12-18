@@ -26,6 +26,7 @@ export class AddBookComponent {
         console.log('Book added successfully:', response);
         this.book = { title: '', author: '', category: '' };
         this.toggleSidebar(); // Ferme l'onglet après ajout
+        window.location.reload();
       },
       (error) => {
         console.error('Error adding book:', error);
