@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookService } from '../../services/book.service';
+import { Chart, registerables } from 'chart.js';
+
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-book-list',
@@ -11,12 +14,13 @@ import { BookService } from '../../services/book.service';
 })
 export class BookListComponent implements OnInit {
   books: any[] = [];
+  filteredBooks: any[] = [];
   editingBook: any = null; // Livre en cours de modification
 
   constructor(private bookService: BookService) {}
 
   ngOnInit() {
-    this.loadBooks();
+    this.loadBooks(); // Charger les livres au démarrage
   }
 
   // Charger la liste des livres
@@ -24,10 +28,25 @@ export class BookListComponent implements OnInit {
     this.bookService.getBooks().subscribe(
       (data) => {
         this.books = data;
+        this.filteredBooks = [...this.books];
+        this.renderChart();
       },
       (error) => {
         console.error('Error fetching books:', error);
       }
+    );
+  }
+
+  safeApplyFilter(field: string, event: Event) {
+    const target = event.target as HTMLInputElement | null;
+    const value = target?.value || ''; // Si target est null, on retourne une chaîne vide
+    this.applyFilter(field, value);
+  }
+
+  // Filtrer les livres
+  applyFilter(field: string, value: string) {
+    this.filteredBooks = this.books.filter((book) =>
+      book[field]?.toLowerCase().includes(value.toLowerCase())
     );
   }
 
@@ -69,13 +88,38 @@ export class BookListComponent implements OnInit {
   cancelEdit() {
     this.editingBook = null;
   }
+
+
+  onInputChange(field: string, event: Event) {
+    const target = event.target as HTMLInputElement | null; // Cast explicite
+    if (this.editingBook && target?.value) {
+      this.editingBook[field] = target.value;
+    }
+  }
   
 
-onInputChange(field: string, event: Event) {
-  const target = event.target as HTMLInputElement;
-  if (this.editingBook && target) {
-    this.editingBook[field] = target.value;
+  // Visualisation des livres par catégorie
+  renderChart() {
+    const categories = this.books.reduce((acc, book) => {
+      acc[book.category] = (acc[book.category] || 0) + 1;
+      return acc;
+    }, {});
+
+    const ctx = document.getElementById('booksChart') as HTMLCanvasElement;
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(categories),
+        datasets: [
+          {
+            label: 'Number of Books',
+            data: Object.values(categories),
+            backgroundColor: '#4CAF50',
+          },
+        ],
+      },
+    });
   }
-}
 
 }

@@ -1,59 +1,85 @@
-<h2>Book List</h2>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Category</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let book of books">
-      <td>{{ book.id }}</td>
-      <td>{{ book.title }}</td>
-      <td>{{ book.author }}</td>
-      <td>{{ book.category }}</td>
-      <td>
-        <!-- Boutons Supprimer et Modifier -->
-        <button (click)="deleteBook(book.id)">Delete</button>
-        <button (click)="startEditing(book)">Edit</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <!-- Titre principal -->
+  <h1 class="header">📚 Library Management System</h1>
 
-<!-- Formulaire de modification sans ngModel -->
-<div *ngIf="editingBook">
-  <h3>Edit Book</h3>
-  <form (submit)="saveEdit()">
-    <label>
-      Title:
-      <input
-        [value]="editingBook?.title"
-        (input)="onInputChange('title', $event)"
-        required
-      />
-    </label>
-    <label>
-      Author:
-      <input
-        [value]="editingBook?.author"
-        (input)="onInputChange('author', $event)"
-        required
-      />
-    </label>
-    <label>
-      Category:
-      <input
-        [value]="editingBook?.category"
-        (input)="onInputChange('category', $event)"
-        required
-      />
-    </label>
-    <button type="submit">Save</button>
-    <button type="button" (click)="cancelEdit()">Cancel</button>
-  </form>
+  <!-- Section des filtres -->
+  <div class="filter-section">
+    <h3>🔍 Filter Books</h3>
+    <input
+      type="text"
+      placeholder="Filter by Title"
+      (input)="safeApplyFilter('title', $event)"
+    />
+    <input
+      type="text"
+      placeholder="Filter by Author"
+      (input)="safeApplyFilter('author', $event)"
+    />
+    <input
+      type="text"
+      placeholder="Filter by Category"
+      (input)="safeApplyFilter('category', $event)"
+    />
+  </div>
+
+  <!-- Table des livres -->
+  <h3 class="table-title">📖 Book List</h3>
+  <table class="book-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of filteredBooks">
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.category }}</td>
+        <td>
+          <button (click)="startEditing(book)" class="btn btn-edit">✏️ Edit</button>
+          <button (click)="deleteBook(book.id)" class="btn btn-delete">🗑️ Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulaire d'édition (sans ngModel) -->
+  <div *ngIf="editingBook" class="edit-form">
+    <h3>✏️ Edit Book</h3>
+    <form (submit)="saveEdit()">
+      <label>
+        Title:
+        <input
+          [value]="editingBook?.title"
+          (input)="onInputChange('title', $event)"
+          required
+        />
+      </label>
+      <label>
+        Author:
+        <input
+          [value]="editingBook?.author"
+          (input)="onInputChange('author', $event)"
+          required
+        />
+      </label>
+      <label>
+        Category:
+        <input
+          [value]="editingBook?.category"
+          (input)="onInputChange('category', $event)"
+          required
+        />
+      </label>
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-save">💾 Save</button>
+        <button type="button" (click)="cancelEdit()" class="btn btn-cancel">❌ Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>
-
