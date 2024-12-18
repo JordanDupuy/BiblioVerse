@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require("path");
-const { Pool } = require('pg');
 const cors = require('cors');
+const { PrismaClient } = require('@prisma/client');
 
+const prisma = new PrismaClient();
 const app = express();
 const PORT = 3051;
 

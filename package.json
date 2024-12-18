@@ -10,10 +10,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@angular/cli": "^19.0.5",
+    "@prisma/client": "^6.1.0",
     "chart.js": "^4.4.7",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "nodemon": "^3.1.9",
-    "pg": "^8.13.1"
+    "pg": "^8.13.1",
+    "prisma": "^6.1.0"
   }
 }
