@@ -15,6 +15,10 @@ Chart.register(...registerables);
 export class BookListComponent implements OnInit {
   books: any[] = [];
   filteredBooks: any[] = [];
+  uniqueAuthors: { name: string; count: number }[] = []; // Liste des auteurs uniques avec leur nombre
+  isAuthorDropdownOpen = false; // État du menu déroulant des auteurs
+  isCategoryDropdownOpen = false; // État du menu déroulant des catégories
+  uniqueCategories: { name: string; count: number }[] = []; // Liste des catégories uniques avec leur nombre
   editingBook: any = null; // Livre en cours de modification
 
   constructor(private bookService: BookService) {}
@@ -29,6 +33,8 @@ export class BookListComponent implements OnInit {
       (data) => {
         this.books = data;
         this.filteredBooks = [...this.books];
+        this.calculateUniqueAuthors(); // Calculer les auteurs uniques
+        this.calculateUniqueCategories(); // Calculer les catégories uniques
         this.renderChart();
       },
       (error) => {
@@ -36,6 +42,56 @@ export class BookListComponent implements OnInit {
       }
     );
   }
+
+  // Calculer les auteurs uniques avec leur nombre de livres
+  calculateUniqueAuthors() {
+    const authorCounts: { [key: string]: number } = {};
+    this.books.forEach((book) => {
+      if (book.author) {
+        authorCounts[book.author] = (authorCounts[book.author] || 0) + 1;
+      }
+    });
+    this.uniqueAuthors = Object.entries(authorCounts).map(([name, count]) => ({
+      name,
+      count,
+    }));
+  }
+
+ // Méthode pour gérer l'ouverture/fermeture du menu Author
+toggleAuthorDropdown(isOpen: boolean) {
+  setTimeout(() => {
+    this.isAuthorDropdownOpen = isOpen;
+  }, 200); // Petit délai pour laisser le clic agir
+}
+
+
+  calculateUniqueCategories() {
+    const categoryCounts: { [key: string]: number } = {};
+    this.books.forEach((book) => {
+      if (book.category) {
+        categoryCounts[book.category] = (categoryCounts[book.category] || 0) + 1;
+      }
+    });
+    this.uniqueCategories = Object.entries(categoryCounts).map(([name, count]) => ({
+      name,
+      count,
+    }));
+  }
+
+// Méthode pour gérer l'ouverture/fermeture du menu Category
+toggleCategoryDropdown(isOpen: boolean) {
+  setTimeout(() => {
+    this.isCategoryDropdownOpen = isOpen;
+  }, 200);
+}
+
+// Filtrer par catégorie depuis le menu déroulant
+selectCategory(category: string) {
+  this.filteredBooks = this.books.filter(
+    (book) => book.category.toLowerCase() === category.toLowerCase()
+  );
+  this.isCategoryDropdownOpen = false; // Fermer le menu après la sélection
+}
 
   safeApplyFilter(field: string, event: Event) {
     const target = event.target as HTMLInputElement | null;
@@ -48,6 +104,14 @@ export class BookListComponent implements OnInit {
     this.filteredBooks = this.books.filter((book) =>
       book[field]?.toLowerCase().includes(value.toLowerCase())
     );
+  }
+
+  // Filtrer par auteur depuis le menu déroulant
+  selectAuthor(author: string) {
+    this.filteredBooks = this.books.filter(
+      (book) => book.author.toLowerCase() === author.toLowerCase()
+    );
+    this.isAuthorDropdownOpen = false; // Fermer le menu après la sélection
   }
 
   // Supprimer un livre

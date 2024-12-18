@@ -5,22 +5,61 @@
   <!-- Section des filtres -->
   <div class="filter-section">
     <h3>🔍 Filter Books</h3>
+
+    <div class="filter-group">
+    <label for="title">Title</label>
     <input
+      id="title"
       type="text"
       placeholder="Filter by Title"
       (input)="safeApplyFilter('title', $event)"
     />
+    </div>
+
+    <div class="filter-group">
+      <label for="author">Author</label>
+      <input
+        id="author"
+        type="text"
+        placeholder="Filter by Author"
+        (input)="safeApplyFilter('author', $event)"
+        (focus)="toggleAuthorDropdown(true)"
+        (blur)="toggleAuthorDropdown(false)"
+      />
+  
+      <!-- Menu déroulant -->
+      <ul *ngIf="isAuthorDropdownOpen" class="dropdown-menu">
+        <li
+          *ngFor="let author of uniqueAuthors"
+          (click)="selectAuthor(author.name)"
+        >
+          {{ author.name }} ({{ author.count }})
+        </li>
+      </ul>
+    </div>
+
+    <!-- Filtre par catégorie avec menu déroulant -->
+  <div class="filter-group">
+    <label for="category">Category</label>
     <input
-      type="text"
-      placeholder="Filter by Author"
-      (input)="safeApplyFilter('author', $event)"
-    />
-    <input
+      id="category"
       type="text"
       placeholder="Filter by Category"
       (input)="safeApplyFilter('category', $event)"
+      (focus)="toggleCategoryDropdown(true)"
+      (blur)="toggleCategoryDropdown(false)"
     />
+    <!-- Menu déroulant -->
+    <ul *ngIf="isCategoryDropdownOpen" class="dropdown-menu">
+      <li
+        *ngFor="let category of uniqueCategories"
+        (click)="selectCategory(category.name)"
+      >
+        {{ category.name }} ({{ category.count }})
+      </li>
+    </ul>
   </div>
+</div>
 
   <!-- Table des livres -->
   <h3 class="table-title">📖 Book List</h3>

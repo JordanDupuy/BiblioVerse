@@ -19,7 +19,6 @@ h1, h2, h3, h4, h5, h6 {
 label {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  margin-bottom: 5px;
   color: #555;
 }
 
@@ -34,44 +33,72 @@ label {
 /* Titre principal */
 .header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Plus d'espace sous le titre */
   font-size: 32px;
   color: #333;
 }
 
 /* Section des filtres */
 .filter-section {
+  margin-bottom: 30px;
   display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start; /* Aligner en haut */
+  gap: 20px;
+  flex-wrap: wrap; /* Gère les petits écrans */
 }
 
 .filter-section h3 {
-  flex: 0 0 100%;
+  width: 100%;
+  text-align: center;
   margin-bottom: 10px;
 }
 
-.filter-section input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  outline: none;
-  transition: border 0.3s;
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-.filter-section input:focus {
-  border-color: #4CAF50;
+.filter-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.filter-group input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Juste sous l'input */
+  left: 0;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.dropdown-menu li {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f2f2f2;
 }
 
 /* Table des livres */
 .book-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .book-table th, .book-table td {
@@ -124,69 +151,7 @@ label {
   transform: scale(1.05);
 }
 
-/* Formulaire d'édition */
-.edit-form {
-  margin: 20px 0;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.edit-form h3 {
-  margin-bottom: 15px;
-  font-size: 20px;
-  color: #333;
-}
-
-.edit-form label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.edit-form input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  outline: none;
-  transition: border 0.3s;
-}
-
-.edit-form input:focus {
-  border-color: #4CAF50;
-}
-
-.form-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.btn-save {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.btn-save:hover {
-  background-color: #388E3C;
-  transform: scale(1.05);
-}
-
-.btn-cancel {
-  background-color: #f44336;
-  color: white;
-}
-
-.btn-cancel:hover {
-  background-color: #d32f2f;
-  transform: scale(1.05);
-}
-
-/* Footer Styles */
+/* Footer */
 .footer {
   background-color: #4CAF50;
   color: white;
@@ -197,29 +162,4 @@ label {
   width: 100%;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-  .filter-section {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .filter-section input {
-    width: 80%;
-  }
-
-  .book-table th, .book-table td {
-    padding: 8px;
-  }
-
-  .sidebar {
-    width: 80%;
-  }
-
-  .sidebar-tab.open {
-    right: 80%;
-  }
 }
