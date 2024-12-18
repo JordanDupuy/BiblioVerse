@@ -13,6 +13,7 @@
       type="text"
       placeholder="Filter by Title"
       (input)="safeApplyFilter('title', $event)"
+      autocomplete="off" 
     />
     </div>
 
@@ -25,6 +26,7 @@
         (input)="safeApplyFilter('author', $event)"
         (focus)="toggleAuthorDropdown(true)"
         (blur)="toggleAuthorDropdown(false)"
+        autocomplete="off" 
       />
   
       <!-- Menu déroulant -->
@@ -48,6 +50,7 @@
       (input)="safeApplyFilter('category', $event)"
       (focus)="toggleCategoryDropdown(true)"
       (blur)="toggleCategoryDropdown(false)"
+      autocomplete="off" 
     />
     <!-- Menu déroulant -->
     <ul *ngIf="isCategoryDropdownOpen" class="dropdown-menu">
@@ -89,37 +92,42 @@
   <div *ngIf="editingBook" class="edit-form">
     <h3>✏️ Edit Book</h3>
     <form (submit)="saveEdit()">
-      <label>
-        Title:
-        <input
-          [value]="editingBook?.title"
-          (input)="onInputChange('title', $event)"
-          required
-        />
-      </label>
-      <label>
-        Author:
-        <input
-          [value]="editingBook?.author"
-          (input)="onInputChange('author', $event)"
-          required
-        />
-      </label>
-      <label>
-        Category:
-        <input
-          [value]="editingBook?.category"
-          (input)="onInputChange('category', $event)"
-          required
-        />
-      </label>
+      <label for="title">Title:</label>
+      <input
+        id="title"
+        type="text"
+        [value]="editingBook?.title"
+        (input)="onInputChange('title', $event)"
+        required
+        autocomplete="off" 
+      />
+  
+      <label for="author">Author:</label>
+      <input
+        id="author"
+        type="text"
+        [value]="editingBook?.author"
+        (input)="onInputChange('author', $event)"
+        required
+        autocomplete="off" 
+      />
+  
+      <label for="category">Category:</label>
+      <input
+        id="category"
+        type="text"
+        [value]="editingBook?.category"
+        (input)="onInputChange('category', $event)"
+        required
+        autocomplete="off" 
+      />
+  
       <div class="form-buttons">
-        <button type="submit" class="btn btn-save">💾 Save</button>
-        <button type="button" (click)="cancelEdit()" class="btn btn-cancel">❌ Cancel</button>
+        <button type="submit" class="btn-save">💾 Save</button>
+        <button type="button" (click)="cancelEdit()" class="btn-cancel">❌ Cancel</button>
       </div>
     </form>
   </div>
-</div>
 
 <!-- Footer -->
 <footer class="footer">

@@ -1,94 +1,82 @@
 /* Onglet interactif (bouton onglet) */
 .sidebar-tab {
-    position: fixed;
-    top: 25%;
-    right: 0;
-    transform: translateY(-50%);
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 8px 0 0 8px;
-    cursor: pointer;
-    transition: right 0.3s ease-in-out;
-    z-index: 1000;
-  }
-  
-  .sidebar-tab:hover {
-    background-color: #45a049;
-  }
-  
-  /* Déplacement du bouton onglet avec le panneau */
-  .sidebar-tab.open {
-    right: 300px; /* Décalé pour suivre le panneau */
-  }
-  
-  /* Panneau coulissant */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    right: -300px; /* Caché par défaut */
-    width: 300px;
-    height: 100%;
-    background-color: #f9f9f9;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    transition: right 0.3s ease-in-out;
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 999;
-  }
-  
-  .sidebar.open {
-    right: 0; /* Affiche le panneau */
-  }
-  
-  .sidebar h2 {
-    margin-top: 0;
-    color: #333;
-    font-size: 20px;
-  }
-  
-  .sidebar form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .sidebar label {
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-  
-  .sidebar input {
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .sidebar button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .sidebar button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Bouton pour fermer le panneau (facultatif) */
-  .close-btn {
-    background: none;
-    border: none;
-    font-size: 30px;
-    color: #333;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
-  
+  position: fixed;
+  top: 25%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #003366; /* Bleu Michelin */
+  color: #FFD700; /* Jaune Michelin */
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar-tab:hover {
+  background-color: #002244; /* Bleu plus sombre */
+}
+
+/* Déplacement du bouton onglet avec le panneau */
+.sidebar-tab.open {
+  right: 300px; /* Décalé pour suivre le panneau */
+}
+
+/* Panneau coulissant */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Caché par défaut */
+  width: 300px;
+  height: 100%;
+  background-color: #f9f9f9;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 999;
+}
+
+.sidebar.open {
+  right: 0; /* Affiche le panneau */
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  color: #003366; /* Bleu Michelin */
+  font-size: 20px;
+}
+
+.sidebar form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.sidebar input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.sidebar button {
+  background-color: #FFD700; /* Jaune Michelin */
+  color: #003366;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.sidebar button:hover {
+  background-color: #FDC500; /* Jaune plus vif */
+}
