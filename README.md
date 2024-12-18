@@ -57,7 +57,7 @@ CREATE DATABASE library_db;
 ### 3. Configuration dans Prisma
 Créez un fichier .env à la racine du projet avec cette ligne :
 ```env
-DATABASE_URL="postgresql://postgres:mot_de_passe@localhost:5432/library_management"
+DATABASE_URL="postgresql://postgres:mot_de_passe@localhost:5432/library_db"
 ```
 Vous devez juste modifier la partie ```mot_de_passe``` avec le mot de passe que vous avez défini pour l'utilisateur postgres
 
