@@ -51,7 +51,7 @@ Mot de passe pour l'utilisateur postgres :
 
 Dans psql, tapez la commande suivante pour créer une base de données nommée library_management :
 ```sql
-CREATE DATABASE library_management;
+CREATE DATABASE library_db;
 ```
 
 ### 3. Configuration dans Prisma
