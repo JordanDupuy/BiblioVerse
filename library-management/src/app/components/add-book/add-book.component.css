@@ -1,76 +1,94 @@
-/* Menu principal */
-.navbar {
-    background-color: #4CAF50;
-    border-width: 0;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .navbar a {
+/* Onglet interactif (bouton onglet) */
+.sidebar-tab {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #4caf50;
     color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    margin: 0 15px;
-    transition: color 0.3s;
-  }
-  
-  .navbar a:hover {
-    color: #d4f8d4;
-  }
-  
-  .navbar .brand {
+    padding: 10px 20px;
+    font-size: 16px;
     font-weight: bold;
-    font-size: 1.5rem;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
   }
   
-  /* Formulaire d'ajout de livre */
-  form {
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 20px;
+  .sidebar-tab:hover {
+    background-color: #45a049;
+  }
+  
+  /* Déplacement du bouton onglet avec le panneau */
+  .sidebar-tab.open {
+    right: 300px; /* Décalé pour suivre le panneau */
+  }
+  
+  /* Panneau coulissant */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Caché par défaut */
+    width: 300px;
+    height: 100%;
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 999;
   }
   
-  form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  .sidebar.open {
+    right: 0; /* Affiche le panneau */
+  }
+  
+  .sidebar h2 {
+    margin-top: 0;
     color: #333;
+    font-size: 20px;
   }
   
-  form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+  .sidebar form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
+  
+  .sidebar input {
+    padding: 8px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
   }
   
-  form input:focus {
-    border-color: #4CAF50;
-    outline: none;
-  }
-  
-  form button {
-    background-color: #4CAF50;
+  .sidebar button {
+    background-color: #4caf50;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 4px;
+    font-size: 16px;
   }
   
-  form button:hover {
+  .sidebar button:hover {
     background-color: #45a049;
+  }
+  
+  /* Bouton pour fermer le panneau (facultatif) */
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #333;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
   }
   

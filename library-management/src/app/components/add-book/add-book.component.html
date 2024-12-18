@@ -1,11 +1,11 @@
-<!-- Menu principal -->
-<div class="navbar">
-  <div class="brand">📚 Library Management</div>
-  <nav>
-    <a href="/books">Book List</a>
-    <a href="/add-book">Add Book</a>
-  </nav>
+<!-- Onglet interactif pour ouvrir/fermer -->
+<div class="sidebar-tab" (click)="toggleSidebar()" [class.open]="isSidebarOpen">
+  ➕ Add Book
 </div>
+
+<!-- Onglet coulissant contenant le formulaire -->
+<div class="sidebar" [class.open]="isSidebarOpen">
+  <h2>➕ Add New Book</h2>
 
 <!-- Formulaire d'ajout de livre -->
 <form (ngSubmit)="onSubmit()">

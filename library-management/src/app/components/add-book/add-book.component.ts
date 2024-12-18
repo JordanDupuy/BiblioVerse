@@ -11,14 +11,21 @@ import { BookService } from '../../services/book.service';
 })
 export class AddBookComponent {
   book = { title: '', author: '', category: '' };
+  isSidebarOpen = false; // État de l'onglet
 
   constructor(private bookService: BookService) {}
+
+  // Basculer l'onglet (ouvrir/fermer)
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
 
   onSubmit() {
     this.bookService.addBook(this.book).subscribe(
       (response) => {
         console.log('Book added successfully:', response);
-        this.book = { title: '', author: '', category: '' }; // Réinitialise le formulaire
+        this.book = { title: '', author: '', category: '' };
+        this.toggleSidebar(); // Ferme l'onglet après ajout
       },
       (error) => {
         console.error('Error adding book:', error);
