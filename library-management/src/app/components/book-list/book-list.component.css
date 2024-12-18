@@ -13,7 +13,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  color: #003366; /* Bleu Michelin */
+  color: #003366; 
 }
 
 label {
@@ -35,7 +35,7 @@ label {
   text-align: center;
   margin-bottom: 40px;
   font-size: 32px;
-  color: #003366; /* Bleu Michelin */
+  color: #003366; 
 }
 
 /* Section des filtres */
@@ -108,8 +108,8 @@ label {
 }
 
 .book-table th {
-  background-color: #003366; /* Bleu Michelin */
-  color: #FFD700; /* Jaune Michelin */
+  background-color: #003366; 
+  color: #FFD700; 
   font-weight: bold;
 }
 
@@ -118,7 +118,7 @@ label {
 }
 
 .book-table tr:hover {
-  background-color: #e8f0ff; /* Légère teinte bleue */
+  background-color: #e8f0ff; 
 }
 
 /* Boutons d'action */
@@ -132,7 +132,7 @@ label {
 }
 
 .btn-edit {
-  background-color: #003366; /* Bleu Michelin */
+  background-color: #003366; 
   color: #FFD700;
 }
 
@@ -142,18 +142,18 @@ label {
 }
 
 .btn-delete {
-  background-color: #f44336; /* Rouge */
+  background-color: #f44336;
   color: white;
 }
 
 .btn-delete:hover {
-  background-color: #d32f2f; /* Rouge plus sombre */
+  background-color: #d32f2f;
   transform: scale(1.05);
 }
 
 /* Formulaire d'édition */
 .edit-form {
-  background-color: #f9f9f9; /* Fond clair */
+  background-color: #f9f9f9; 
   border: 1px solid #ddd; /* Bordure subtile */
   border-radius: 8px;
   padding: 20px;
@@ -169,7 +169,7 @@ label {
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color: #003366; /* Bleu Michelin */
+  color: #003366; 
   text-align: center;
 }
 
@@ -190,9 +190,9 @@ label {
 }
 
 .edit-form input:focus {
-  border-color: #003366; /* Bleu Michelin */
+  border-color: #003366; 
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 51, 102, 0.5); /* Légère lueur bleue */
+  box-shadow: 0 0 5px rgba(0, 51, 102, 0.5);
 }
 
 .form-buttons {
@@ -202,8 +202,8 @@ label {
 }
 
 .btn-save {
-  background-color: #003366; /* Bleu Michelin */
-  color: #FFD700; /* Jaune Michelin */
+  background-color: #003366; 
+  color: #FFD700; 
   border: none;
   padding: 10px 15px;
   font-size: 14px;
@@ -213,12 +213,12 @@ label {
 }
 
 .btn-save:hover {
-  background-color: #002244; /* Bleu plus sombre */
+  background-color: #002244; 
   transform: scale(1.05); /* Agrandissement léger */
 }
 
 .btn-cancel {
-  background-color: #f44336; /* Rouge pour annuler */
+  background-color: #f44336;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -229,14 +229,14 @@ label {
 }
 
 .btn-cancel:hover {
-  background-color: #d32f2f; /* Rouge plus sombre */
+  background-color: #d32f2f;
   transform: scale(1.05);
 }
 
 /* Footer */
 .footer {
-  background-color: #003366; /* Bleu Michelin */
-  color: #FFD700; /* Jaune Michelin */
+  background-color: #003366;
+  color: #FFD700; 
   text-align: center;
   padding: 15px 0;
   position: fixed;

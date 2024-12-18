@@ -4,8 +4,8 @@
   top: 25%;
   right: 0;
   transform: translateY(-50%);
-  background-color: #003366; /* Bleu Michelin */
-  color: #FFD700; /* Jaune Michelin */
+  background-color: #003366; 
+  color: #FFD700; 
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -16,7 +16,7 @@
 }
 
 .sidebar-tab:hover {
-  background-color: #002244; /* Bleu plus sombre */
+  background-color: #002244; 
 }
 
 /* Déplacement du bouton onglet avec le panneau */
@@ -45,7 +45,7 @@
 
 .sidebar h2 {
   margin-top: 0;
-  color: #003366; /* Bleu Michelin */
+  color: #003366; 
   font-size: 20px;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .sidebar button {
-  background-color: #FFD700; /* Jaune Michelin */
+  background-color: #FFD700; 
   color: #003366;
   border: none;
   padding: 10px;
@@ -78,5 +78,5 @@
 }
 
 .sidebar button:hover {
-  background-color: #FDC500; /* Jaune plus vif */
+  background-color: #FDC500; 
 }
